@@ -5,7 +5,11 @@ import { TASK_STATUS_CLASS_MAP, TASK_STATUS_TEXT_MAP } from "@/constants.jsx";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
 import TableHeading from "@/Components/TableHeading";
-const TasksTable = ({ tasks, queryParams = null }) => {
+const TasksTable = ({
+  tasks,
+  queryParams = null,
+  hideProjectColumn = false,
+}) => {
   queryParams = queryParams || {};
   const searchFieldChanged = (name, value) => {
     if (value) {
@@ -51,6 +55,9 @@ const TasksTable = ({ tasks, queryParams = null }) => {
                 ID
               </TableHeading>
               <th className="px-3 py-3">Image</th>
+              {!hideProjectColumn && (
+                <th className="px-3 py-3">Project Name</th>
+              )}
               <TableHeading
                 name="name"
                 sort_field={queryParams.sort_field}
@@ -91,6 +98,7 @@ const TasksTable = ({ tasks, queryParams = null }) => {
             <tr className="text-nowrap">
               <th className="px-3 py-3"></th>
               <th className="px-3 py-3"></th>
+              {!hideProjectColumn && <th className="px-3 py-3"></th>}
               <th className="px-3 py-3">
                 <TextInput
                   className="w-full"
@@ -128,6 +136,9 @@ const TasksTable = ({ tasks, queryParams = null }) => {
                 <td className="px-3 py-2">
                   <img src={task.image_path} style={{ width: 60 }} />
                 </td>
+                {!hideProjectColumn && (
+                  <td className="px-3 py-2">{task.project.name}</td>
+                )}
                 <th className="px-3 py-2 text-gray-100 text-nowrap hover:underline">
                   <Link href={route("task.show", task.id)}>{task.name}</Link>
                 </th>
