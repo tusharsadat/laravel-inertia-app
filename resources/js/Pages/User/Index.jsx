@@ -37,7 +37,7 @@ const Index = ({ auth, users, queryParams = null, success }) => {
     router.get(route("user.index"), queryParams);
   };
 
-  const deleteProject = (user) => {
+  const deleteUser = (user) => {
     if (!window.confirm("Are you sure you want to delete the user?")) {
       return;
     }
@@ -162,7 +162,7 @@ const Index = ({ auth, users, queryParams = null, success }) => {
                             Edit
                           </Link>
                           <button
-                            onClick={(e) => deleteProject(user)}
+                            onClick={(e) => deleteUser(user)}
                             className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1"
                           >
                             Delete
