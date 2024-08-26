@@ -19,6 +19,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/task/my-tasks', [TaskController::class, 'myTasks'])
+        ->name('task.myTasks');
     Route::resource('project', ProjectController::class);
     Route::resource('task', TaskController::class);
     Route::resource('user', UserController::class);
