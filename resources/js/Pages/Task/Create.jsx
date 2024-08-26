@@ -12,6 +12,7 @@ const Create = ({ auth, projects, users }) => {
     image: "",
     name: "",
     status: "",
+    priority: "",
     description: "",
     due_date: "",
   });
